@@ -1,17 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-3xl font-semibold text-gray-800">
-        NoteNest
-      </h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<div>Notes Page</div>} />
+      <Route path="/new" element={<div>New Note</div>} />
+      <Route path="/note/:id" element={<div>Note Details</div>} />
+    </Routes>
   )
 }
 
