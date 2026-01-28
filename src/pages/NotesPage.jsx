@@ -12,13 +12,17 @@ function NotesPage(){
         setNotes((prevnote)=>[note,...prevnote])
     }
 
+    const updateNotes = (note) =>{
+        setNotes((prevnote)=>prevnote.map((n)=>n.id===note.id?note:n))
+    }
+
     return(
         <div className="flex h-screen">
             <SideBar notes = {notes}/>
             <main className="flex-1">
                 <Routes>
                     <Route path="/new" element={<NewNote createNote={createNote} />} />
-                    <Route path="/note/:id" element={<NoteDetail/>} />
+                    <Route path="/note/:id" element={<NoteDetail notes={notes} onUpdateNote={updateNotes}/>} />
                     <Route path="/" element = {<div className="p-6 text-gray-500">Select a note to start editing</div>} />
                 </Routes>
             </main>
