@@ -15,6 +15,10 @@ function NotesPage(){
         localStorage.setItem('notenest-notes',JSON.stringify(notes))
     },[notes])
 
+    const sortedNotes = [...notes].sort(
+        (a,b)=>b.updatedAt - a.updatedAt
+    )
+
     const createNote = (note) =>{
         setNotes((prevnote)=>[note,...prevnote])
     }
@@ -29,12 +33,12 @@ function NotesPage(){
 
     return(
         <div className="flex h-screen">
-            <SideBar notes = {notes}/>
+            <SideBar notes = {sortedNotes}/>
             <main className="flex-1">
                 <Routes>
                     <Route path="/new" element={<NewNote createNote={createNote} />} />
                     <Route path="/note/:id" element={<NoteDetail notes={notes} onUpdateNote={updateNotes} onDeleteNote={deleteNote}/>} />
-                    <Route path="/" element = {<div className="p-6 text-gray-500">Select a note to start editing</div>} />
+                    <Route path="/" element = {<div className="p-6 text-gray-500">Create or select a note to get started</div>} />
                 </Routes>
             </main>
         </div>

@@ -43,7 +43,10 @@ function NoteDetail({notes,onUpdateNote,onDeleteNote}){
 
                 <button
                 onClick={handleDelete}
-                className="ml-4 text-sm text-red-600 hover:text-red-700"
+                className="ml-4 rounded border border-red-200 px-3 py-1
+                text-sm text-red-600
+                hover:bg-red-50 hover:border-red-300 hover:text-red-700
+                transition"
                 >
                 Delete
                 </button>

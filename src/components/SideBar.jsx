@@ -7,7 +7,7 @@ function SideBar({notes}) {
 
   return (
     <aside className="w-64 border-r border-gray-200 p-4">
-      <h1 className="text-xl font-semibold mb-4"><Link to={'/'}>NoteNest</Link></h1>
+      <h1 className="text-xl font-semibold mb-4"><Link to={'/'} className="text-xl font-semibold mb-4 hover:opacity-60">NoteNest</Link></h1>
       <button 
       onClick={()=>navigate('/new')}
       className="mb-4 rounded bg-gray-800 px-3 py-2 text-sm text-white hover:bg-gray-700">+ New Note</button>
