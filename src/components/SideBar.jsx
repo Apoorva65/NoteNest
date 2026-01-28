@@ -1,5 +1,5 @@
 import React from "react"
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import NoteItem from "./NoteItem";
 
 function SideBar({notes}) {
@@ -7,7 +7,7 @@ function SideBar({notes}) {
 
   return (
     <aside className="w-64 border-r border-gray-200 p-4">
-      <h2 className="text-xl font-semibold mb-4">NoteNest</h2>
+      <h1 className="text-xl font-semibold mb-4"><Link to={'/'}>NoteNest</Link></h1>
       <button 
       onClick={()=>navigate('/new')}
       className="mb-4 rounded bg-gray-800 px-3 py-2 text-sm text-white hover:bg-gray-700">+ New Note</button>

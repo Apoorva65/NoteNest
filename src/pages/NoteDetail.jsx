@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { replace, useNavigate,useParams } from "react-router-dom";
 
-function NoteDetail({notes,onUpdateNote}){
+function NoteDetail({notes,onUpdateNote,onDeleteNote}){
 
     const {id} = useParams();
+    const navigate = useNavigate();
 
     const note = notes.find((n)=>n.id===id);
 
@@ -23,16 +24,30 @@ function NoteDetail({notes,onUpdateNote}){
         })
     }
 
+    const handleDelete = () =>{
+            onDeleteNote(note.id);
+            navigate('/',{replace:true});
+        }
+
 
 
     return(
         <div className="p-6 h-full flex flex-col">
-            <input
-            type="text"
-            placeholder="Note Title"
-            value={note.title}
-            onChange={(e)=>handleUpdate('title',e.target.value)}
-            className="mb-4 text-2xl font-semibold outline-none" />
+            <div className="flex items-center justify-between mb-4">
+                <input
+                type="text"
+                placeholder="Note Title"
+                value={note.title}
+                onChange={(e)=>handleUpdate('title',e.target.value)}
+                className="mb-4 text-2xl font-semibold outline-none" />
+
+                <button
+                onClick={handleDelete}
+                className="ml-4 text-sm text-red-600 hover:text-red-700"
+                >
+                Delete
+                </button>
+             </div>
 
             <textarea
             type="text"
