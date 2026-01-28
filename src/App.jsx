@@ -6,9 +6,7 @@ import NoteDetail from './pages/NoteDetail'
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<NotesPage />} />
-      <Route path="/new" element={<NewNote />} />
-      <Route path="/note/:id" element={<NoteDetail />} />
+       <Route path='/*' element={<NotesPage />} />
     </Routes>
   )
 }
