@@ -7,14 +7,14 @@ function NewNote({createNote}){
 
     useEffect(()=>{
         const newNote = {
-            id : crypto.randomUUID(),
+            id : Date.now().toString(),
             title : '',
             content : '',
             updatedAt : Date.now()
         }
 
         createNote(newNote);
-        navigate(`/note/${newNote.id}`);
+        navigate(`/note/${newNote.id}`,{ replace: true });
     },[])
 
     return null;

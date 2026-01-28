@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 import { Route, Routes } from "react-router-dom";
 import NewNote from "./NewNote";
@@ -6,7 +6,14 @@ import NoteDetail from "./NoteDetail";
 
 function NotesPage(){
 
-    const [notes,setNotes] = useState([]);
+    const [notes,setNotes] = useState(()=>{
+        const savedNotes = localStorage.getItem('notenest-notes');
+        return savedNotes?JSON.parse(savedNotes):[];
+    });
+
+    useEffect(()=>{
+        localStorage.setItem('notenest-notes',JSON.stringify(notes))
+    },[notes])
 
     const createNote = (note) =>{
         setNotes((prevnote)=>[note,...prevnote])
