@@ -1,5 +1,6 @@
 import React from "react"
 import {useNavigate} from 'react-router-dom'
+import NoteItem from "./NoteItem";
 
 function SideBar({notes}) {
     const navigate = useNavigate();
@@ -11,7 +12,15 @@ function SideBar({notes}) {
       onClick={()=>navigate('/new')}
       className="mb-4 rounded bg-gray-800 px-3 py-2 text-sm text-white hover:bg-gray-700">+ New Note</button>
       <div className="text-sm text-gray-500">
-        {notes.length===0?'No Notes yet':'Notes will appear here'}
+        {notes.length===0?
+        <div className="text-sm text-gray-500">
+            No notes yet
+          </div>
+          :
+          (notes.map((note)=>(
+            <NoteItem  key={note.id} note={note} />
+          ))
+          )}
       </div>
     </aside>
   )
