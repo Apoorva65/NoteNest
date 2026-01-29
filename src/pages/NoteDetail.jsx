@@ -32,7 +32,7 @@ function NoteDetail({notes,onUpdateNote,onDeleteNote}){
 
 
     return(
-        <div className="p-6 h-full flex flex-col">
+        <div className="p-6 flex flex-col flex-1">
             <div className="flex items-center justify-between mb-4">
                 <input
                 type="text"

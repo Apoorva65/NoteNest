@@ -32,7 +32,7 @@ function NotesPage(){
     }
 
     return(
-        <div className="flex h-screen">
+        <div className="flex h-screen flex-col md:flex-row">
             <SideBar notes = {sortedNotes}/>
             <main className="flex-1">
                 <Routes>
